@@ -18,7 +18,10 @@
     "prettier": "^2.3.2"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
     "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.1.0",
     "morgan": "^1.10.0",
     "winston": "^3.3.3"
   }
