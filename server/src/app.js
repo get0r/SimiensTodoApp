@@ -9,6 +9,7 @@ const { httpLogger } = require('./helpers/logger/appLogger');
 
 const errorHandler = require('./api/middlewares/error/errorHandler');
 const clientErrorHandler = require('./api/middlewares/error/clientErrorHandler');
+const connectToDatabase = require('./database/db');
 
 const app = express();
 
@@ -16,7 +17,8 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
-app.use(compression())
+app.use(compression());
+
 app.use(cors());
 app.options('*', cors());
 
@@ -26,7 +28,8 @@ app.use(mongoSanitize());
 //  cookie to req.cookies.
 app.use(cookieParser());
 
-//  connectToDatabase();
+
+connectToDatabase();
 
 //  network traffic logger.
 app.use(httpLogger);
