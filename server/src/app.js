@@ -2,6 +2,7 @@ const express = require('express');
 const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
+const compression = require('compression');
 
 const NotFoundError = require('./helpers/error/NotFoundError');
 const { httpLogger } = require('./helpers/logger/appLogger');
@@ -15,6 +16,7 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(compression())
 app.use(cors());
 app.options('*', cors());
 
