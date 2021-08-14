@@ -30,7 +30,9 @@
 		},
 		"peacock.color": "#ff3d00",
 		"cSpell.words": [
-			"middlewares"
+			"middlewares",
+			"simiens",
+			"todo"
 		],
 		"editor.formatOnSave": true
 	}

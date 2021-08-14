@@ -28,7 +28,6 @@ app.use(mongoSanitize());
 //  cookie to req.cookies.
 app.use(cookieParser());
 
-
 connectToDatabase();
 
 //  network traffic logger.
