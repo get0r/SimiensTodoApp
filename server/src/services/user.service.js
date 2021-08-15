@@ -1,5 +1,9 @@
+const JWT = require('jsonwebtoken');
+
+const config = require('../config/config');
 const UserModel = require('../database/models/user.model');
 const ApiError = require('../helpers/error/ApiError');
+
 const { hashString } = require('../utils/hashGenerator');
 
 /**
@@ -31,6 +35,17 @@ const signUp = async ({
   }
 };
 
+/**
+ * a method to generate a JWT token by signing userId and username of a client or user as a payload.
+ * @param {String} userId unique id of the user on the database
+ * @param {String} username username of the user
+ */
+const generateToken = (userId, username) => {
+  const payload = { id: userId, username };
+  return JWT.sign(payload, config.app.tokenSecret, { expiresIn: '48h' });
+};
+
 module.exports = {
   signUp,
+  generateToken,
 };
