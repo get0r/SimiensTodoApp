@@ -34,7 +34,7 @@ connectToDatabase();
 app.use(httpLogger);
 
 //  connect all app routes version 1.
-//  app.use('/api/v1', require('./api/routes/v1'));
+app.use('/api/v1', require('./api/routes/v1'));
 
 app.all('*', (req, res, next) => {
   next(
