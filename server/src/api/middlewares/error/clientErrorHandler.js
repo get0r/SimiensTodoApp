@@ -10,7 +10,7 @@ const { sendErrorResponse } = require('../../../utils/responseBuilder');
  * @param {Function} next next routing function
  */
 const clientErrorHandler = (err, req, res, next) => {
-  switch (typeof err) {
+  switch (err.constructor) {
     case ValidationError:
       return sendErrorResponse(res, err.httpCode, 'Invalid input was given.');
     case NotFoundError:
