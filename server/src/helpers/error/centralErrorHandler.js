@@ -1,3 +1,4 @@
+const serverTerminator = require('../../utils/serverTerminator');
 const { appLogger } = require('../logger/appLogger');
 const BaseError = require('./BaseError');
 
@@ -19,8 +20,9 @@ const centralErrorHandler = (err) => {
     appLogger.warn(errorMessage);
   } else {
     appLogger.error(errorMessage);
-    //  send message notification here and
+    //  send message notification email(sms).
     //  restart gracefully.
+    serverTerminator();
   }
 };
 
