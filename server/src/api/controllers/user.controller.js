@@ -1,3 +1,6 @@
+/* eslint-disable no-underscore-dangle */
+const _ = require('lodash');
+
 const config = require('../../config/config');
 const UserServices = require('../../services/user.service');
 
@@ -20,12 +23,12 @@ const userSignUp = async (req, res, next) => {
     if (user === null) {
       return sendErrorResponse(res, BAD_REQUEST, 'username already exists');
     }
-    const token = await UserServices.generateToken(user._id, user.username);
+    const token = UserServices.generateToken(user._id, user.username);
     //  place the token on the cookie and send the user
     res.cookie('token', token, { httpOnly: true, secure: config.app.secureCookie, sameSite: true });
     appLogger.info(`User Registeration Successful userId ${user._id}`);
 
-    return sendSuccessResponse(res, user);
+    return sendSuccessResponse(res, _.pick(user, ['fname', 'lname', 'username']));
   } catch (error) {
     return next(error);
   }
