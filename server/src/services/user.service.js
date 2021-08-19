@@ -1,4 +1,5 @@
 const JWT = require('jsonwebtoken');
+const _ = require('lodash');
 
 const config = require('../config/config');
 const UserModel = require('../database/models/user.model');
@@ -25,11 +26,11 @@ const signUp = async ({
       fname,
       lname,
       username,
-      hashedPassword,
+      password: hashedPassword,
     });
     const savedUser = await newUser.save();
 
-    return savedUser;
+    return _.pick(savedUser, ['fname', 'lname', 'username']);
   } catch (error) {
     throw new ApiError(error.message);
   }
