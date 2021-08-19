@@ -3,6 +3,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const compression = require('compression');
+const helmet = require('helmet');
 
 const NotFoundError = require('./helpers/error/NotFoundError');
 const { httpLogger } = require('./helpers/logger/appLogger');
@@ -17,7 +18,11 @@ app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));
 
+//  gzip for response compression.
 app.use(compression());
+
+//  helmet for header security.
+app.use(helmet());
 
 app.use(cors());
 app.options('*', cors());
