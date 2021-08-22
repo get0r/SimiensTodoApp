@@ -14,12 +14,12 @@ const { hashString } = require('../utils/hashGenerator');
 const signUp = async ({
   fname, lname, username, password,
 }) => {
-  const DoesUserExist = await UserModel.findOne({ username }).lean();
-  //   the inserted user name exists
-  if (DoesUserExist) {
-    return null;
-  }
   try {
+    const DoesUserExist = await UserModel.findOne({ username }).lean();
+    //   the inserted user name exists
+    if (DoesUserExist) {
+      return null;
+    }
     const hashedPassword = await hashString(password);
     const newUser = new UserModel({
       fname,
