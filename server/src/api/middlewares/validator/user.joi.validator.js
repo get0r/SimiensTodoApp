@@ -8,10 +8,10 @@ const UserValidationSchema = require('../../../helpers/validationSchema/user.joi
  * @param {Function} next next middleware function
  * @returns the result of the login controller.
  */
-const userLoginValidator = catchAsync(async (req, res, next) => {
+const validateUserSignIn = catchAsync(async (req, res, next) => {
   //  asynchronously run validation.
   await UserValidationSchema
-    .loginSchema.validateAsync(req.body, UserValidationSchema.schemaOptions);
+    .signInSchema.validateAsync(req.body, UserValidationSchema.schemaOptions);
   return next();
 });
 
@@ -22,13 +22,13 @@ const userLoginValidator = catchAsync(async (req, res, next) => {
  * @param {Function} next the next middleware function
  * @returns result of the signup controller
  */
-const userSignUpValidator = catchAsync(async (req, res, next) => {
+const validateUserSignUp = catchAsync(async (req, res, next) => {
   await UserValidationSchema
     .signUpSchema.validateAsync(req.body, UserValidationSchema.schemaOptions);
   return next();
 });
 
 module.exports = {
-  userLoginValidator,
-  userSignUpValidator,
+  validateUserSignIn,
+  validateUserSignUp,
 };

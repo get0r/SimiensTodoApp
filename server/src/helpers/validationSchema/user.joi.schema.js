@@ -11,7 +11,7 @@ const usernameSchema = Joi.string().min(3).max(10).regex(/[A-za-z1-9\s]+/)
 const passwordSchema = Joi.string().min(8).max(22).required();
 
 //  validator for login purpose.
-const loginSchema = Joi.object({
+const signInSchema = Joi.object({
   username: usernameSchema,
   password: passwordSchema,
 });
@@ -25,6 +25,6 @@ const signUpSchema = Joi.object({
 
 module.exports = {
   schemaOptions,
-  loginSchema,
+  signInSchema,
   signUpSchema,
 };

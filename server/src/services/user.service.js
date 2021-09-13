@@ -2,9 +2,8 @@ const JWT = require('jsonwebtoken');
 
 const config = require('../config/config');
 const UserModel = require('../database/models/user.model');
-const ApiError = require('../helpers/error/ApiError');
 
-const { hashString } = require('../utils/hashGenerator');
+const { hashString, compareHash } = require('../utils/hashGenerator');
 
 /**
  * a method to attempt to write user data to database and return the written object.
@@ -14,25 +13,43 @@ const { hashString } = require('../utils/hashGenerator');
 const signUp = async ({
   fname, lname, username, password,
 }) => {
-  try {
-    const DoesUserExist = await UserModel.findOne({ username }).lean();
-    //   the inserted user name exists
-    if (DoesUserExist) {
-      return null;
-    }
-    const hashedPassword = await hashString(password);
-    const newUser = new UserModel({
-      fname,
-      lname,
-      username,
-      password: hashedPassword,
-    });
-    const savedUser = await newUser.save();
-
-    return savedUser;
-  } catch (error) {
-    throw new ApiError(error.message);
+  const doesUserExist = await UserModel.findOne({ username }).lean();
+  //   the inserted user name exists
+  if (doesUserExist) {
+    return null;
   }
+  const hashedPassword = await hashString(password);
+  const newUser = new UserModel({
+    fname,
+    lname,
+    username,
+    password: hashedPassword,
+  });
+  const savedUser = await newUser.save();
+
+  return savedUser;
+};
+
+/**
+ * a method to attempt to auth user by checking the availability
+ * of the user and the associated password.
+ * or throw an error in times of error.
+ * @param {Object} param0 user details.
+ */
+const signIn = async ({ username, password }) => {
+  const user = await UserModel.findOne({ username }).lean();
+  //   user doesn't exist so stop proceeding.
+  if (!user) {
+    return null;
+  }
+
+  const isPasswordRight = await compareHash(password, user.password);
+
+  if (!isPasswordRight) {
+    return null;
+  }
+
+  return user;
 };
 
 /**
@@ -47,5 +64,6 @@ const generateToken = (userId, username) => {
 
 module.exports = {
   signUp,
+  signIn,
   generateToken,
 };

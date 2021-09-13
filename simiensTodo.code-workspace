@@ -5,7 +5,7 @@
 		}
 	],
 	"settings": {
-		"liveServer.settings.multiRootWorkspaceName": null,
+		"liveServer.settings.multiRootWorkspaceName": "btd010920218",
 		"workbench.colorCustomizations": {
 			"activityBar.activeBackground": "#ff6433",
 			"activityBar.activeBorder": "#00ff3d",
@@ -26,7 +26,8 @@
 		"cSpell.words": [
 			"middlewares",
 			"simiens",
-			"todo"
+			"todo",
+			"Todos"
 		],
 		"editor.formatOnSave": true
 	}
