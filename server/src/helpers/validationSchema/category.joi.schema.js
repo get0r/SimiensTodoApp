@@ -1,10 +1,8 @@
 const Joi = require('joi');
 
-const nameSchema = Joi.string().regex(/^[A-za-z\s]+$/).required();
-
 const categorySchema = Joi.object({
-  title: nameSchema,
-  subTitle: nameSchema,
+  title: Joi.string().trim().min(2).required(),
+  subTitle: Joi.string(),
 });
 
 module.exports = categorySchema;

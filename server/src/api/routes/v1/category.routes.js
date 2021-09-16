@@ -15,4 +15,10 @@ catRouter
 catRouter
   .get('/categories/:categoryId', authUser, CategoryController.getCategory);
 
+catRouter
+  .put('/categories/:categoryId', authUser, CategoryController.updateCategory);
+
+catRouter
+  .delete('/categories/:categoryId', authUser, CategoryController.removeCategory);
+
 module.exports = catRouter;

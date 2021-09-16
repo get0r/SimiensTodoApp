@@ -26,14 +26,16 @@ const createCategory = async ({ title, subTitle, ownerId }) => {
  * @returns retrieved category- might be empty
  */
 const getCategoryById = async (userId, categoryId) => {
+  if (categoryId.length !== 24) return null;
+
   const category = await CategoryModel.findById(categoryId).lean();
 
   if (!category) {
-    return {};
+    return null;
   }
 
   if (category.ownerId.toString() !== userId) {
-    return {};
+    return null;
   }
   return category;
 };
@@ -45,12 +47,52 @@ const getCategoryById = async (userId, categoryId) => {
  */
 const getCategoriesByUserId = async (userId) => {
   const categories = await CategoryModel.find({ ownerId: userId }).lean();
-
+  if (!categories) {
+    return [];
+  }
   return categories;
+};
+
+/**
+ * a method to delete a category record from db using its id.
+ * @param {String} categoryId category id
+ * @returns removed category- might be empty
+ */
+const removeCategoryById = async (userId, categoryId) => {
+  const toBeRemoved = await getCategoryById(userId, categoryId);
+  if (!toBeRemoved) {
+    return null;
+  }
+  const removedCategory = await CategoryModel.deleteOne({ _id: categoryId }).lean();
+  if (!removedCategory) {
+    return null;
+  }
+
+  return toBeRemoved;
+};
+
+/**
+ * a method to update a category record i.e items in the record from db using its id.
+ * @param {String} categoryId category id
+ * @returns updated category
+ */
+const updateCategoryById = async (userId, categoryId, updatedObject) => {
+  const toBeUpdated = await getCategoryById(userId, categoryId);
+  if (!toBeUpdated) {
+    return null;
+  }
+  const updatedCategory = await CategoryModel
+    .updateOne({ _id: categoryId }, { $set: updatedObject }).lean();
+  if (!updatedCategory) {
+    return null;
+  }
+  return true;
 };
 
 module.exports = {
   createCategory,
   getCategoryById,
   getCategoriesByUserId,
+  removeCategoryById,
+  updateCategoryById,
 };
