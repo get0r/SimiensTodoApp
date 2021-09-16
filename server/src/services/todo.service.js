@@ -57,13 +57,12 @@ const getTodosByCategoryId = async (userId, categoryId) => {
 const getTodoById = async (userId, categoryId, todoId) => {
   if (todoId.length !== 24) return null;
   const category = await CategoryServices.getCategoryById(userId, categoryId);
-
   if (!category) {
     return null;
   }
 
   const todo = await TodoModel.findById(todoId).lean();
-  if (todo.categoryId.toString() !== categoryId) {
+  if (!todo || todo.categoryId.toString() !== categoryId) {
     return null;
   }
   return todo;

@@ -75,6 +75,9 @@ const removeTodo = catchAsync(async (req, res) => {
    * @param {Object} res response object
    */
 const updateTodo = catchAsync(async (req, res) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return sendErrorResponse(res, BAD_REQUEST, 'Nothing to Update!');
+  }
   const updatedTodo = await TodoServices
     .updateTodoById(req.userId, req.params.categoryId, req.params.todoId, req.body);
 
@@ -83,6 +86,7 @@ const updateTodo = catchAsync(async (req, res) => {
   }
   return sendSuccessResponse(res, updatedTodo);
 });
+
 module.exports = {
   newTodo,
   getTodosByCategory,

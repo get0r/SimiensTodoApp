@@ -71,6 +71,9 @@ const removeCategory = catchAsync(async (req, res) => {
  * @param {Object} res response object
  */
 const updateCategory = catchAsync(async (req, res) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return sendErrorResponse(res, BAD_REQUEST, 'Nothing to Update!');
+  }
   const updatedCat = await CategoryServices
     .updateCategoryById(req.userId, req.params.categoryId, req.body);
 
