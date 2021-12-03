@@ -7,7 +7,8 @@ export const ContainerType = {
     paddedContainer: 'container px-6 py-2',
     paddedContainerAuto: 'container px-6 py-2 mx-auto',
     fullWidth: 'w-full',
-    roundedUserPhoto: 'w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full'
+    roundedUserPhoto: 'w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full',
+    sideBar: 'absolute top-2 right-0 flex flex-col w-96 h-screen px-4 py-8 bg-white border-r',
 };
 
 export const NavType = {
@@ -27,6 +28,7 @@ export const TypographyType = {
     brandText: `text-xl font-bold ${TextColorType.primaryDark} px-3 lg:text-2xl hover:${TextColorType.primary}`,
     nameText: `text-sm font-medium ${TextColorType.primary}`,
     xUpperText: `text-xl ${TextColorType.secondary} font-bold uppercase`,
+    lgText: 'font-bold text-lg mb-2',
 }
 
 export const ImageType = {
