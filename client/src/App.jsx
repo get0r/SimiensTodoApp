@@ -1,13 +1,10 @@
 import React from 'react';
-import { NavBar } from './layouts';
 
-import SignInPage from './pages/SignInPage';
+import Routes from './pages/Routes';
 
 let App = function () {
   return (
-    <>
-      <SignInPage />
-    </>
+    <Routes />
   );
 }
 
