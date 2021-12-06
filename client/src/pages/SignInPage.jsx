@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { SignIn } from '../containers';
-import { Layout } from '../layouts';
+import { Layout, NavBar } from '../layouts';
 
 const SignInPage = () => {
     return (
