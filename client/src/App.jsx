@@ -1,12 +1,12 @@
 import React from 'react';
 import { NavBar } from './layouts';
-import Content from './layouts/Content/Content';
+
+import SignInPage from './pages/SignInPage';
 
 let App = function () {
   return (
     <>
-      <NavBar />
-      <Content />
+      <SignInPage />
     </>
   );
 }
