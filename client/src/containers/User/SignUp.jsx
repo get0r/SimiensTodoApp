@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { CustomForm } from '../../components';
+import { CustomForm, Toast } from '../../components';
 import { signUpSchema } from '../../helpers/formSchema';
 
 const SignUp = () => {
+    console.log(Toast('Hey', 'You are doing great'));
     return (
         <div className='w-1/3 mx-auto'>
             <CustomForm
@@ -14,11 +15,11 @@ const SignUp = () => {
                     { label: 'Password', type: 'text', name: 'password', placeholder: 'Password' }
                 ] }
                 validationSchema={ signUpSchema }
-                onSubmit={ (values, setSubmitting) => setTimeout(() => { setSubmitting(false); console.log(values) }, 3000) }
+                onSubmit={ (values, setSubmitting) => { setSubmitting(true); setTimeout(() => { setSubmitting(false); console.log(values) }, 3000) } }
                 initialValues={ { firstName: '', lastName: '', username: '', password: '' } }
                 submitName="Sign Up">
             </CustomForm>
-        </div>
+        </div >
     );
 };
 
