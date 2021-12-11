@@ -36,6 +36,7 @@ export const ImageType = {
     logoImage: 'object-cover w-9 h-9'
 }
 export const ButtonType = {
+    primary: 'w-full block bg-indigo-500 disabled:opacity-50 hover:bg-indigo-400 focus:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3 mt-6',
     blueIconWhite: 'w-5 h-5 text-white group-hover:text-blue-400',
     userContainerBtn: `${ContainerType.flexCenter} rounded hover:bg-gray-200 p-2`,
     roundedIcon: `${ContainerType.flexBothCenter} outline-none border-2 border-blue-400 rounded-full bg-blue-400 group hover:bg-white`,
