@@ -5,14 +5,13 @@ const Toast = (title, message) => {
         toast()
             .warning(title, message)
             .with({
-                shape: 'pill',
-                duration: 3000,
+                duration: 2000,
                 speed: 1000,
                 positionX: 'end',
                 positionY: 'top',
                 color: 'bg-red-800',
-                fontColor: 'red',
-                fontTone: 200
+                fontColor: 'white',
+                fontTone: 500,
             }).show()
     );
 };
