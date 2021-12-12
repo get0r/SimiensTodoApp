@@ -8,7 +8,7 @@ import { signUp, userSelector } from '../../store/slices/user.slice';
 
 const SignUp = () => {
     const dispatch = useDispatch()
-    const { loading, hasErrors, error, user } = useSelector(userSelector);
+    const { hasErrors, error } = useSelector(userSelector);
 
     const handleSignUp = (values, setSubmitting) => {
         setSubmitting(true);
@@ -23,15 +23,15 @@ const SignUp = () => {
         <div className='w-1/3 mx-auto'>
             <CustomForm
                 fields={ [
-                    { label: 'First Name', type: 'text', name: 'firstName', placeholder: 'Abebe' },
-                    { label: 'Last Name', type: 'text', name: 'lastName', placeholder: 'Kebede' },
+                    { label: 'First Name', type: 'text', name: 'fname', placeholder: 'Abebe' },
+                    { label: 'Last Name', type: 'text', name: 'lname', placeholder: 'Kebede' },
                     { label: 'Username', type: 'text', name: 'username', placeholder: 'abebe' },
                     { label: 'Password', type: 'text', name: 'password', placeholder: 'Password' }
                 ] }
                 validationSchema={ signUpSchema }
                 onSubmit={ handleSignUp }
                 disableBtn={ !hasErrors }
-                initialValues={ { firstName: '', lastName: '', username: '', password: '' } }
+                initialValues={ { fname: '', lname: '', username: '', password: '' } }
                 submitName="Sign Up">
             </CustomForm>
         </div>

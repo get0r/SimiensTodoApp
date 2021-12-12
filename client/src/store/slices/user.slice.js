@@ -64,25 +64,24 @@ export default userSlice.reducer;
 
 //async logic actions
 
-export const signIn = (username, password) => {
-    async dispatch => {
+export const signIn = (userInfo) => {
+    return async dispatch => {
         dispatch(startLoading());
         try {
-            const user = await AuthServices.signIn({ username, password });
-            dispatch(signInSuccess(user));
+            const { message } = await (await AuthServices.signIn(userInfo)).data;
+            dispatch(signInSuccess(message));
         } catch (error) {
-            dispatch(signInFailed(error.message));
+            dispatch(signInFailed(withError(error)));
         }
     };
 };
 
 export const signUp = (userInfo) => {
-    console.log('here')
     return async dispatch => {
         dispatch(startLoading());
         try {
-            const user = await (await AuthServices.signUp(userInfo)).data;
-            return dispatch(signUpSuccess(user.message))
+            const { message } = await (await AuthServices.signUp(userInfo)).data;
+            return dispatch(signUpSuccess(message))
         } catch (error) {
             return dispatch(signUpFailed(withError(error)));
         }
