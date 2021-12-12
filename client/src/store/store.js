@@ -17,6 +17,6 @@ export const history = createBrowserHistory();
 
 export const store = configureStore({
     reducer: rootReducerCreator(history),
-    middleware: [routerMiddleware(history)],
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routerMiddleware(history)),
     devTools: true,
 });

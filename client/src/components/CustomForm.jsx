@@ -5,7 +5,7 @@ import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { ButtonType } from '../styles/theme';
 
 
-const CustomForm = ({ fields, initialValues, onSubmit, validationSchema, submitName }) => {
+const CustomForm = ({ fields, initialValues, onSubmit, validationSchema, disableBtn, submitName }) => {
 
     const generateFields = (formikObj) => {
         let key = 0;
@@ -33,8 +33,8 @@ const CustomForm = ({ fields, initialValues, onSubmit, validationSchema, submitN
                 (formik) => (
                     <Form noValidate>
                         { generateFields(formik) }
-                        <button type="submit" disabled={ !(formik.isValid && formik.dirty && !formik.isSubmitting) } className={ ButtonType.primary }>
-                            { formik.isSubmitting ? 'Please wait...' : submitName }
+                        <button type="submit" disabled={ !(formik.isValid && formik.dirty && !formik.isSubmitting) && disableBtn } className={ ButtonType.primary }>
+                            { formik.isSubmitting && disableBtn ? 'Please wait...' : submitName }
                         </button>
                     </Form>
                 )
@@ -49,6 +49,7 @@ CustomForm.propTypes = {
     onSubmit: PropTypes.func,
     validationSchema: PropTypes.object,
     initialValues: PropTypes.object,
+    disableBtn: PropTypes.bool,
 };
 
 export default CustomForm;

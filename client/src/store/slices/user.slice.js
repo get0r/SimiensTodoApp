@@ -1,5 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { AuthServices } from '../../services/auth.service';
+import { withError } from "../../services/axios";
 
 const initialState = {
     user: null,
@@ -14,13 +15,16 @@ const userSlice = createSlice({
     reducers: {
         startLoading: (state) => {
             state.loading = true;
+            state.hasErrors = false;
+            state.error = null;
+            state.user = null;
         },
 
         signInSuccess: (state, action) => {
-            state.user = action.payload,
             state.loading = false;
+            state.user = action.payload,
+                state.error = null;
             state.hasErrors = false;
-            state.error = null;
         },
 
         signInFailed: (state, action) => {
@@ -38,7 +42,7 @@ const userSlice = createSlice({
 
         signUpFailed: (state, action) => {
             state.loading = false;
-            state.hasErrors = false;
+            state.hasErrors = true;
             state.error = action.payload;
         },
     },
@@ -72,3 +76,15 @@ export const signIn = (username, password) => {
     };
 };
 
+export const signUp = (userInfo) => {
+    console.log('here')
+    return async dispatch => {
+        dispatch(startLoading());
+        try {
+            const user = await (await AuthServices.signUp(userInfo)).data;
+            return dispatch(signUpSuccess(user.message))
+        } catch (error) {
+            return dispatch(signUpFailed(withError(error)));
+        }
+    };
+};
