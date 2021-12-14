@@ -87,3 +87,10 @@ export const signUp = (userInfo) => {
         }
     };
 };
+
+export const setUser = (user) => {
+    return async dispatch => {
+        dispatch(startLoading());
+        dispatch(user);
+    };
+};

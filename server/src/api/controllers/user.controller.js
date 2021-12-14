@@ -28,7 +28,7 @@ const userSignUp = catchAsync(async (req, res) => {
   res.cookie('token', token, { httpOnly: true, secure: config.app.secureCookie, sameSite: true });
   appLogger.info(`User Registration Successful userId ${user._id}`);
 
-  return sendSuccessResponse(res, _.pick(user, ['_id', 'fname', 'lname', 'username']));
+  return sendSuccessResponse(res, { ..._.pick(user, ['_id', 'fname', 'lname', 'username']), token });
 });
 
 /**
@@ -50,7 +50,7 @@ const userSignIn = catchAsync(async (req, res) => {
   res.cookie('token', token, { httpOnly: true, secure: config.app.secureCookie, sameSite: true });
   appLogger.info(`User SignIn Successful userId ${user._id}`);
 
-  return sendSuccessResponse(res, _.pick(user, ['_id', 'fname', 'lname', 'username']));
+  return sendSuccessResponse(res, { ..._.pick(user, ['_id', 'fname', 'lname', 'username']), token });
 });
 
 module.exports = {
