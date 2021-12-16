@@ -27,6 +27,13 @@ const userSlice = createSlice({
             state.hasErrors = false;
         },
 
+        setUserFailed: (state, action) => {
+            state.loading = false;
+            state.user = undefined;
+            state.error = null;
+            state.hasErrors = false;
+        },
+
         signInSuccess: (state, action) => {
             state.loading = false;
             state.user = action.payload;
@@ -58,6 +65,7 @@ const userSlice = createSlice({
 const {
     startLoading,
     setUserSuccess,
+    setUserFailed,
     signInSuccess,
     signInFailed,
     signUpSuccess,
@@ -96,9 +104,14 @@ export const signUp = (userInfo) => {
     };
 };
 
-export const setUser = (user) => {
+export const fetchUser = () => {
     return async dispatch => {
         dispatch(startLoading());
-        dispatch(setUserSuccess(user));
+        try {
+            const { message } = await (await AuthServices.getUser()).data;
+            return dispatch(setUserSuccess(message));
+        } catch (error) {
+            return dispatch(setUserFailed())
+        }
     };
 };

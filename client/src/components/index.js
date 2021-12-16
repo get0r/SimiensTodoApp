@@ -5,3 +5,4 @@ export { default as List } from './common/List';
 export { default as Typography } from './common/Typography';
 export { default as Toast } from './common/Toast';
 export { default as CustomForm } from './CustomForm';
+export { default as Loader } from './common/Loader';

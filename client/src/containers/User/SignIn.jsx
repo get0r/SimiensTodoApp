@@ -12,7 +12,6 @@ const SignIn = () => {
     const dispatch = useDispatch();
     const { hasErrors, error } = useSelector(userSelector);
 
-    isAuthenticated()
     const handleSignIn = (values, setSubmitting) => {
         setSubmitting(true);
         dispatch(signIn(values));
