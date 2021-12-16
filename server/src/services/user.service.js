@@ -52,6 +52,16 @@ const signIn = async ({ username, password }) => {
   return user;
 };
 
+const getUser = async (userId) => {
+  const user = await UserModel.findOne({ _id: userId }).lean();
+  //   user doesn't exist so stop proceeding.
+  if (!user) {
+    return null;
+  }
+
+  return user;
+};
+
 /**
  * a method to generate a JWT token by signing userId and username of a client or user as a payload.
  * @param {String} userId unique id of the user on the database
@@ -66,4 +76,5 @@ module.exports = {
   signUp,
   signIn,
   generateToken,
+  getUser,
 };

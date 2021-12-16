@@ -1,5 +1,7 @@
-import { api } from './axios';
+import { apiCreator } from './axios';
 import { SIGNIN, SIGNUP, USER } from './routeConstants';
+
+const api = apiCreator({ withCredentials: true });
 
 export const AuthServices = {
     signIn: (signInInfo) => api.post(SIGNIN, signInInfo),

@@ -20,10 +20,17 @@ const userSlice = createSlice({
             state.user = null;
         },
 
+        setUserSuccess: (state, action) => {
+            state.loading = false;
+            state.user = action.payload;
+            state.error = null;
+            state.hasErrors = false;
+        },
+
         signInSuccess: (state, action) => {
             state.loading = false;
-            state.user = action.payload,
-                state.error = null;
+            state.user = action.payload;
+            state.error = null;
             state.hasErrors = false;
         },
 
@@ -50,6 +57,7 @@ const userSlice = createSlice({
 
 const {
     startLoading,
+    setUserSuccess,
     signInSuccess,
     signInFailed,
     signUpSuccess,
@@ -91,6 +99,6 @@ export const signUp = (userInfo) => {
 export const setUser = (user) => {
     return async dispatch => {
         dispatch(startLoading());
-        dispatch(user);
+        dispatch(setUserSuccess(user));
     };
 };

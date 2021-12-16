@@ -6,11 +6,13 @@ import Toast from '../../components/common/Toast';
 import { CustomForm } from '../../components';
 import { signInSchema } from '../../helpers/formSchema';
 import { userSelector, signIn } from '../../store/slices/user.slice';
+import { isAuthenticated } from '../../helpers/isAuthenticated';
 
 const SignIn = () => {
     const dispatch = useDispatch();
     const { hasErrors, error } = useSelector(userSelector);
 
+    isAuthenticated()
     const handleSignIn = (values, setSubmitting) => {
         setSubmitting(true);
         dispatch(signIn(values));

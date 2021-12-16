@@ -7,7 +7,7 @@ const catchAsync = require('../../helpers/error/catchAsyncError');
 
 const { appLogger } = require('../../helpers/logger/appLogger');
 const { sendSuccessResponse, sendErrorResponse } = require('../../utils/responseBuilder');
-const { BAD_REQUEST } = require('../../helpers/constants/statusCodeConstants');
+const { BAD_REQUEST, NOT_FOUND } = require('../../helpers/constants/statusCodeConstants');
 
 /**
  * a method to try register the user by calling services function
@@ -53,7 +53,18 @@ const userSignIn = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, { ..._.pick(user, ['_id', 'fname', 'lname', 'username']), token });
 });
 
+const getUser = catchAsync(async (req, res) => {
+  const user = await UserServices.getUser(req.userId);
+
+  if (user === null) {
+    return sendErrorResponse(res, NOT_FOUND, 'Not Found!');
+  }
+  const { token } = req.cookies;
+  return sendSuccessResponse(res, { ..._.pick(user, ['_id', 'fname', 'lname', 'username']), token });
+});
+
 module.exports = {
   userSignUp,
   userSignIn,
+  getUser,
 };

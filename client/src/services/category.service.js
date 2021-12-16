@@ -1,6 +1,7 @@
-import { api } from './axios';
+import { apiCreator } from './axios';
 import { CATEGORIES, withId } from './routeConstants';
 
+const api = apiCreator();
 export const CategoryService = {
     createCategory: (categoryInfo) => api.post(CATEGORIES, categoryInfo),
     getCategoryById: (categoryId) => api.get(withId(CATEGORIES, categoryId)),

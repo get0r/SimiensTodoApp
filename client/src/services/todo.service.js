@@ -1,5 +1,7 @@
-import { api } from './axios';
+import { apiCreator } from './axios';
 import { TODOS } from './routeConstants';
+
+const api = apiCreator();
 
 export const TodoService = {
     createTodo: (todoInfo) => api.post(TODOS, todoInfo),
