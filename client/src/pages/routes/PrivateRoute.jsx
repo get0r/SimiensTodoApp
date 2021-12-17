@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
-import { Loader } from '../../components';
+import { Loader, Toast } from '../../components';
 import { isAuthenticated } from '../../helpers/isAuthenticated';
 import { SIGNIN } from './pathConstants';
 import { useSelector } from 'react-redux';
@@ -11,9 +11,15 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
     const render = props => {
         const isAuth = isAuthenticated(user);
-        if (isAuth === 0) return <Redirect to={ SIGNIN } />
-        if (isAuth === 1) return <Component { ...props } />
-
+        switch (isAuth) {
+            case 0:
+                return <Redirect to={ SIGNIN } />
+            case 1:
+                return <Component { ...props } />
+            case 2:
+                return <Loader />
+        }
+        Toast('Error', 'Connection problem. reload the page and try again please.');
         return <Loader />
     };
 

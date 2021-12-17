@@ -10,8 +10,8 @@ const Toast = (title, message) => {
                 positionX: 'end',
                 positionY: 'top',
                 color: 'bg-red-800',
-                fontColor: 'white',
-                fontTone: 500,
+                fontColor: 'red',
+                fontTone: 200,
             }).show()
     );
 };

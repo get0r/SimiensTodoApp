@@ -29,7 +29,7 @@ const userSlice = createSlice({
 
         setUserFailed: (state, action) => {
             state.loading = false;
-            state.user = undefined;
+            state.user = action.payload;
             state.error = null;
             state.hasErrors = false;
         },
@@ -111,7 +111,13 @@ export const fetchUser = () => {
             const { message } = await (await AuthServices.getUser()).data;
             return dispatch(setUserSuccess(message));
         } catch (error) {
-            return dispatch(setUserFailed())
+            //if the user is not authenticated
+            if (error.response) {
+                return dispatch(setUserFailed(undefined));
+            }
+
+            //network error
+            return dispatch(setUserFailed(0));
         }
     };
 };

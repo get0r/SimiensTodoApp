@@ -1,8 +1,8 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom'
-import { Loader } from '../../components';
+import { Loader, Toast } from '../../components';
 import { isAuthenticated } from '../../helpers/isAuthenticated';
-import { SIGNIN, HOME, ME } from './pathConstants';
+import { ME } from './pathConstants';
 import { useSelector } from 'react-redux';
 import { userSelector } from '../../store/slices/user.slice';
 
@@ -11,10 +11,17 @@ const PublicRoute = ({ component: Component, restricted = false, ...rest }) => {
 
     const render = props => {
         const isAuth = isAuthenticated(user);
-        if (isAuth === 2) return <Loader />
-        if (isAuth === 1 && restricted) return <Redirect to={ ME } />
-
-        return <Component { ...props } />
+        switch (isAuth) {
+            case 0:
+                return <Component { ...props } />
+            case 1:
+                if (restricted) return <Redirect to={ ME } />
+                return <Component { ...props } />
+            case 2:
+                return <Loader />
+        }
+        Toast('Error', 'Connection problem. reload the page and try again please.');
+        return <Loader />
     };
 
     return <Route { ...rest } render={ render } />
