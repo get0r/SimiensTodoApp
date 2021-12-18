@@ -12,6 +12,7 @@ import PublicRoute from './routes/PublicRoute';
 import NotFoundPage from './NotFoundPage';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUser, userSelector } from '../store/slices/user.slice';
+import MePage from './MePage';
 
 
 const Routes = () => {
@@ -27,6 +28,7 @@ const Routes = () => {
                 <Switch>
                     <PublicRoute restricted path="/signIn" component={ SignInPage } />
                     <PublicRoute restricted path="/signUp" component={ SignUpPage } />
+                    <PrivateRoute path="/me" component={ MePage } />
                     <PublicRoute component={ NotFoundPage } />
                 </Switch>
             </ConnectedRouter>
