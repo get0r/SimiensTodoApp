@@ -8,7 +8,7 @@ export const ContainerType = {
     paddedContainerAuto: 'container px-6 py-2 mx-auto',
     fullWidth: 'w-full',
     roundedUserPhoto: 'w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full',
-    sideBar: 'absolute top-2 right-0 flex flex-col w-96 h-screen px-4 py-8 bg-white border-r',
+    sideBar: 'absolute top-2 right-0 flex flex-col w-96 h-screen px-4 py-8 bg-white border-r z-99',
 };
 
 export const NavType = {
@@ -40,7 +40,8 @@ export const ButtonType = {
     blueIconWhite: 'w-5 h-5 text-white group-hover:text-blue-400',
     userContainerBtn: `${ContainerType.flexCenter} rounded hover:bg-gray-200 p-2`,
     roundedIcon: `${ContainerType.flexBothCenter} outline-none border-2 border-blue-400 rounded-full bg-blue-400 group hover:bg-white`,
-    primaryTextPadded: `${TextColorType.primary} block px-4 py-2 text-sm hover:${TextColorType.primaryLight}`
+    primaryTextPadded: `${TextColorType.primary} block px-4 py-2 text-sm hover:${TextColorType.primaryLight}`,
+    floating: 'w-10 h-10 text-white ouline-none rounded-full bg-blue-500 absolute bottom-7 right-7 p-2',
 };
 
 export const CardType = {
@@ -50,5 +51,5 @@ export const CardType = {
 };
 
 export const GridType = {
-    horizontal: 'grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ',
+    horizontal: 'grid gap-y-14 gap-x-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ',
 };
