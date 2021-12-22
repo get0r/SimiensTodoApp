@@ -42,6 +42,7 @@ const userSlice = createSlice({
         },
 
         signInFailed: (state, action) => {
+            state.user = undefined;
             state.loading = false;
             state.hasErrors = true;
             state.error = action.payload;
@@ -55,6 +56,7 @@ const userSlice = createSlice({
         },
 
         signUpFailed: (state, action) => {
+            state.user = undefined;
             state.loading = false;
             state.hasErrors = true;
             state.error = action.payload;
