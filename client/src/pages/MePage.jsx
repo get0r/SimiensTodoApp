@@ -12,7 +12,7 @@ const MePage = () => {
         <Layout>
             <CategoryList />
             <FAB icon={ PlusIcon } />
-            <SideBar show />
+            <SideBar />
         </Layout>
     );
 };

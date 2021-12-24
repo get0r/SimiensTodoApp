@@ -10,7 +10,7 @@ import { isAuthenticated } from '../../helpers/isAuthenticated';
 
 const SignIn = () => {
     const dispatch = useDispatch();
-    const { hasErrors, error } = useSelector(userSelector);
+    const { user, hasErrors, error } = useSelector(userSelector);
 
     const handleSignIn = (values, setSubmitting) => {
         setSubmitting(true);

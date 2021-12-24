@@ -5,11 +5,13 @@ import { routerMiddleware } from 'connected-react-router';
 import { createBrowserHistory } from 'history';
 
 import userReducer from './slices/user.slice';
+import authReducer from './slices/auth.slice';
 
 const rootReducerCreator = history => {
     return {
         router: connectRouter(history),
         user: userReducer,
+        auth: authReducer,
     };
 };
 

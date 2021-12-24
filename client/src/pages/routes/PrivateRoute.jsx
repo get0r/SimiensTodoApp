@@ -1,16 +1,17 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router-dom'
+import { Redirect, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+
 import { Loader, Toast } from '../../components';
 import { isAuthenticated } from '../../helpers/isAuthenticated';
 import { SIGNIN } from './pathConstants';
-import { useSelector } from 'react-redux';
-import { userSelector } from '../../store/slices/user.slice';
+import { authSelector } from '../../store/slices/auth.slice';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    const { user } = useSelector(userSelector);
+    const { token } = useSelector(authSelector);
 
     const render = props => {
-        const isAuth = isAuthenticated(user);
+        const isAuth = isAuthenticated(token);
         switch (isAuth) {
             case 0:
                 return <Redirect to={ SIGNIN } />

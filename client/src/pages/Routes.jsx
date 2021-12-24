@@ -10,16 +10,16 @@ import SignUpPage from './SignUpPage';
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
 import NotFoundPage from './NotFoundPage';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchUser, userSelector } from '../store/slices/user.slice';
+import { useDispatch } from 'react-redux';
 import MePage from './MePage';
+import { fetchToken } from '../store/slices/auth.slice';
 
 
 const Routes = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchUser());
+        dispatch(fetchToken());
     }, []);
 
     return (

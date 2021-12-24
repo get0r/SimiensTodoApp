@@ -1,6 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 import { AuthServices } from '../../services/auth.service';
 import { withError } from "../../services/axios";
+import { fetchTokenSuccess } from "./auth.slice";
 
 const initialState = {
     user: null,
@@ -17,21 +18,19 @@ const userSlice = createSlice({
             state.loading = true;
             state.hasErrors = false;
             state.error = null;
-            state.user = null;
         },
 
-        setUserSuccess: (state, action) => {
+        fetchUserSuccess: (state, action) => {
             state.loading = false;
             state.user = action.payload;
             state.error = null;
             state.hasErrors = false;
         },
 
-        setUserFailed: (state, action) => {
+        fetchUserFailed: (state, action) => {
             state.loading = false;
-            state.user = action.payload;
-            state.error = null;
-            state.hasErrors = false;
+            state.error = action.payload;
+            state.hasErrors = true;
         },
 
         signInSuccess: (state, action) => {
@@ -56,7 +55,6 @@ const userSlice = createSlice({
         },
 
         signUpFailed: (state, action) => {
-            state.user = undefined;
             state.loading = false;
             state.hasErrors = true;
             state.error = action.payload;
@@ -64,10 +62,10 @@ const userSlice = createSlice({
     },
 });
 
-const {
+export const {
     startLoading,
-    setUserSuccess,
-    setUserFailed,
+    fetchUserSuccess,
+    fetchUserFailed,
     signInSuccess,
     signInFailed,
     signUpSuccess,
@@ -88,6 +86,7 @@ export const signIn = (userInfo) => {
         try {
             const { message } = await (await AuthServices.signIn(userInfo)).data;
             dispatch(signInSuccess(message));
+            return dispatch(fetchTokenSuccess(message.token));
         } catch (error) {
             dispatch(signInFailed(withError(error)));
         }
@@ -111,15 +110,9 @@ export const fetchUser = () => {
         dispatch(startLoading());
         try {
             const { message } = await (await AuthServices.getUser()).data;
-            return dispatch(setUserSuccess(message));
+            return dispatch(fetchUserSuccess(message));
         } catch (error) {
-            //if the user is not authenticated
-            if (error.response) {
-                return dispatch(setUserFailed(undefined));
-            }
-
-            //network error
-            return dispatch(setUserFailed(0));
+            return dispatch(fetchUserFailed(withError(error)));
         }
     };
 };

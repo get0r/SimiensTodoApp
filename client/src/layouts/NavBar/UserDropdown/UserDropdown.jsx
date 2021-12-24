@@ -11,6 +11,9 @@ const UserDropDown = ({ fullName, username }) => {
         setIsDropdownVisible(!isDropdownVisible);
     };
 
+    const onSignOut = () => {
+
+    }
     return (
         <div className={ ContainerType.flexColCenter }>
             <button className={ ButtonType.userContainerBtn }
@@ -23,7 +26,7 @@ const UserDropDown = ({ fullName, username }) => {
 
                 <h3 className={ `${TypographyType.nameText} px-2 md:block hidden` }>{ fullName }</h3>
             </button>
-            <DropdownMenu show={ isDropdownVisible } />
+            <DropdownMenu show={ isDropdownVisible } onSignOut={ onSignOut } />
         </div>
     );
 };
