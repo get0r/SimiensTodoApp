@@ -33,6 +33,9 @@ const CustomForm = ({ fields, initialValues, onSubmit, validationSchema, disable
                 (formik) => (
                     <Form noValidate>
                         { generateFields(formik) }
+                        {
+                            console.log(formik.isValid, formik.dirty, formik.isSubmitting, disableBtn)
+                        }
                         <button type="submit" disabled={ !(formik.isValid && formik.dirty && !formik.isSubmitting) && disableBtn } className={ ButtonType.primary }>
                             { formik.isSubmitting && disableBtn ? 'Please wait...' : submitName }
                         </button>
