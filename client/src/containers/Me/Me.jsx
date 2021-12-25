@@ -5,6 +5,7 @@ import { SideBar } from '../../layouts';
 import { FAB, Modal } from '../../components';
 
 import { PlusIcon } from '@heroicons/react/solid';
+import AddCategory from '../Category/AddCategory';
 
 const Me = () => {
     const onModalClose = () => {
@@ -15,8 +16,8 @@ const Me = () => {
             <CategoryList />
             <FAB icon={ PlusIcon } />
             <SideBar />
-            <Modal onClose={ onModalClose }>
-                <p>HI</p>
+            <Modal show onClose={ onModalClose }>
+                <AddCategory />
             </Modal>
         </>
     );
