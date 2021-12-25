@@ -41,7 +41,7 @@ export const ButtonType = {
     userContainerBtn: `${ContainerType.flexCenter} rounded hover:bg-gray-200 p-2`,
     roundedIcon: `${ContainerType.flexBothCenter} outline-none border-2 border-blue-400 rounded-full bg-blue-400 group hover:bg-white`,
     primaryTextPadded: `${TextColorType.primary} block px-4 py-2 text-sm hover:${TextColorType.primaryLight}`,
-    floating: 'w-10 h-10 text-white ouline-none rounded-full bg-blue-500 absolute bottom-7 right-7 p-2',
+    floating: 'w-10 h-10 text-white ouline-none rounded-full bg-blue-500 static bottom-7 right-7 p-2',
 };
 
 export const CardType = {
