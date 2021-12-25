@@ -1,18 +1,13 @@
 import React from 'react';
 
-import { PlusIcon } from '@heroicons/react/solid';
-
-import { Layout, SideBar } from '../layouts';
-import { CategoryList } from '../containers';
-import { FAB } from '../components';
+import { Layout } from '../layouts';
+import { Me } from '../containers';
 
 
 const MePage = () => {
     return (
         <Layout>
-            <CategoryList />
-            <FAB icon={ PlusIcon } />
-            <SideBar />
+            <Me />
         </Layout>
     );
 };

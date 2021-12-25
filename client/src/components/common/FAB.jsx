@@ -5,8 +5,7 @@ const FAB = ({ icon: Icon, onClick }) => {
     return (
         <button
             className={ ButtonType.floating }
-            onClick={ onClick }
-        >
+            onClick={ onClick }>
             <Icon />
         </button>
     );

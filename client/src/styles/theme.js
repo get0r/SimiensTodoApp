@@ -8,7 +8,7 @@ export const ContainerType = {
     paddedContainerAuto: 'container px-6 py-2 mx-auto',
     fullWidth: 'w-full',
     roundedUserPhoto: 'w-8 h-8 overflow-hidden border-2 border-gray-400 rounded-full',
-    sideBar: 'absolute top-2 right-0 flex flex-col w-96 h-screen px-4 py-8 bg-white border-r z-99',
+    sideBar: 'fixed top-0 right-0 flex flex-col w-96 overflow-scroll h-screen px-4 py-t-8 bg-white border-r z-0',
 };
 
 export const NavType = {
@@ -41,7 +41,7 @@ export const ButtonType = {
     userContainerBtn: `${ContainerType.flexCenter} rounded hover:bg-gray-200 p-2`,
     roundedIcon: `${ContainerType.flexBothCenter} outline-none border-2 border-blue-400 rounded-full bg-blue-400 group hover:bg-white`,
     primaryTextPadded: `${TextColorType.primary} block px-4 py-2 text-sm hover:${TextColorType.primaryLight}`,
-    floating: 'w-10 h-10 text-white ouline-none rounded-full bg-blue-500 static bottom-7 right-7 p-2',
+    floating: 'w-10 h-10 text-white ouline-none rounded-full border border-blue-500 bg-blue-500 fixed bottom-0 right-0 mb-7 mr-7 p-2 hover:bg-white hover:text-blue-500',
 };
 
 export const CardType = {

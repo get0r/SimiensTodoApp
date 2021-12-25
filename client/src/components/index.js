@@ -7,3 +7,4 @@ export { default as Toast } from './common/Toast';
 export { default as CustomForm } from './CustomForm';
 export { default as Loader } from './common/Loader';
 export { default as FAB } from './common/FAB';
+export { default as Modal } from './common/Modal';

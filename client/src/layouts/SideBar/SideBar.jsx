@@ -11,13 +11,16 @@ const SideBar = ({ show }) => {
     if (!show) return null;
 
     return (
-        <div class={ ContainerType.sideBar }>
-            <CloseButton />
-            <TodoTitleCard />
-            <TodoTitleCard />
-            <TodoTitleCard />
-            <TodoTitleCard />
-        </div>
+        <>
+            <div className='h-full w-full fixed top-0 right-0 opacity-50 bg-gray-200'></div>
+            <div class={ ContainerType.sideBar }>
+                <CloseButton />
+                <TodoTitleCard />
+                <TodoTitleCard />
+                <TodoTitleCard />
+                <TodoTitleCard />
+            </div>
+        </>
     );
 };
 
