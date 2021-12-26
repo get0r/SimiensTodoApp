@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ContainerType, TypographyType } from '../../styles/theme';
+import { ContainerType, TypographyType } from '../../assets/styles/theme';
 
 const TodoTitleCard = ({ title, desc }) => {
     return (

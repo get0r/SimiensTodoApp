@@ -3,8 +3,8 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { CustomForm, Toast } from '../../components';
-import { signUpSchema } from '../../helpers/formSchema';
 import { signUp, userSelector } from '../../store/slices/user.slice';
+import { signUpInitials, signUpSchema } from '../../helpers/formSchemas/userSchema';
 
 const SignUp = () => {
     const dispatch = useDispatch()
@@ -31,7 +31,7 @@ const SignUp = () => {
                 validationSchema={ signUpSchema }
                 onSubmit={ handleSignUp }
                 disableBtn={ !hasErrors }
-                initialValues={ { fname: '', lname: '', username: '', password: '' } }
+                initialValues={ signUpInitials }
                 submitName="Sign Up">
             </CustomForm>
         </div>

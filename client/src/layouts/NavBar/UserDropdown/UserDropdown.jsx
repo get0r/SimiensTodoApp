@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import propTypes from 'prop-types';
 
-import { ButtonType, ContainerType, ImageType, TypographyType } from '../../../styles/theme';
+import { ButtonType, ContainerType, ImageType, TypographyType } from '../../../assets/styles/theme';
 import DropdownMenu from './DropdownMenu';
 
 const UserDropDown = ({ fullName, username }) => {

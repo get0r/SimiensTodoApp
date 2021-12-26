@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { List } from '../../components';
-import { GridType } from '../../styles/theme';
+import { GridType } from '../../assets/styles/theme';
 
 import CategoryCard from './CategoryCard';
 

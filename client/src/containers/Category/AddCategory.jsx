@@ -1,16 +1,18 @@
 import React from 'react';
 
 import { CustomForm } from '../../components';
+import { categoryInitials, categorySchema } from '../../helpers/formSchemas/categorySchema';
 
 const AddCategory = () => {
     return (
         <CustomForm
             fields={ [
-                { label: 'Username', type: 'text', name: 'username', placeholder: 'abebe' },
-                { label: 'Password', type: 'text', name: 'password', placeholder: 'Password' }
+                { label: 'Title', type: 'text', name: 'title', placeholder: 'To Be Done' },
+                { label: 'Sub Title', type: 'text', name: 'subTitle', placeholder: 'tasks to be done today' }
             ] }
-            initialValues={ { username: '', password: '' } }
-            submitName="Sign In">
+            initialValues={ categoryInitials }
+            validationSchema={ categorySchema }
+            submitName="Add Category">
         </CustomForm>
     );
 };

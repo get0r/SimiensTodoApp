@@ -4,9 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import Toast from '../../components/common/Toast';
 
 import { CustomForm } from '../../components';
-import { signInSchema } from '../../helpers/formSchema';
 import { userSelector, signIn } from '../../store/slices/user.slice';
-import { isAuthenticated } from '../../helpers/isAuthenticated';
+import { signInInitials, signInSchema } from '../../helpers/formSchemas/userSchema';
 
 const SignIn = () => {
     const dispatch = useDispatch();
@@ -31,7 +30,7 @@ const SignIn = () => {
                 validationSchema={ signInSchema }
                 onSubmit={ handleSignIn }
                 disableBtn={ !hasErrors }
-                initialValues={ { username: '', password: '' } }
+                initialValues={ signInInitials }
                 submitName="Sign In">
             </CustomForm>
         </div>

@@ -6,13 +6,13 @@ import Content from './Content';
 const Layout = ({ header: Header, children, footer: Footer }) => {
 
     return (
-        <>
+        <div className='font-Roboto'>
             { Header ? <Header /> : null }
             <Content>
                 { children }
             </Content>
             { Footer ? <Footer /> : null }
-        </>
+        </div>
     );
 };
 

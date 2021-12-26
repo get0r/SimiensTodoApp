@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { TypographyType, ImageType, ContainerType } from '../../styles/theme';
+import { TypographyType, ImageType, ContainerType } from '../../assets/styles/theme';
 
 import logo from '../../assets/images/logo.png';
 

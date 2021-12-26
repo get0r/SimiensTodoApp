@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { ButtonType, CardType } from '../../../styles/theme';
+import { ButtonType, CardType } from '../../../assets/styles/theme';
 
 const DropdownMenu = ({ show, onSignOut, onChangePassword }) => {
     if (!show) return null;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { NavType, ContainerType } from '../../styles/theme';
+import { NavType, ContainerType } from '../../assets/styles/theme';
 
 import Logo from './Logo';
 import UserDropDown from './UserDropdown/UserDropdown';

@@ -3,7 +3,11 @@ module.exports = {
     "./src/**/*.{js,jsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Roboto: ["Roboto", "sans-serif"],
+      },
+    },
   },
   variants: {
     opacity: ({ after }) => after(['disabled'])

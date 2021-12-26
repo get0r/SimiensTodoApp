@@ -2,14 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { ErrorMessage, Field, Form, Formik } from 'formik';
-import { ButtonType } from '../styles/theme';
+import { ButtonType } from '../assets/styles/theme';
 
 
 const CustomForm = ({ fields, initialValues, onSubmit, validationSchema, disableBtn, submitName }) => {
 
     const generateFields = (formikObj) => {
         let key = 0;
-        const fieldStyle = 'w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:bg-white focus:outline-none';
+        const fieldStyle = 'w-full px-4 py-2 text-base border border-gray-300 rounded outline-none focus:ring-blue-500 focus:border-blue-500 focus:ring-1';
         const { errors, touched } = formikObj;
 
         return fields.map(field => (
@@ -19,7 +19,7 @@ const CustomForm = ({ fields, initialValues, onSubmit, validationSchema, disable
                     id={ field.name }
                     name={ field.name }
                     placeholder={ field.placeholder }
-                    className={ errors[field.name] && touched[field.name] ? `${fieldStyle} focus:border-blue-500` : fieldStyle } />
+                    className={ errors[field.name] && touched[field.name] ? `${fieldStyle}` : fieldStyle } />
                 <div className="text-red-600 font-serif p-2">
                     <ErrorMessage name={ field.name } />
                 </div>

@@ -31,3 +31,15 @@ export const signInSchema = Yup.object().shape({
         .required("Password is required")
         .min(8, "Password is too short - should be 8 chars minimum"),
 });
+
+export const signUpInitials = {
+    fname: '',
+    lname: '',
+    username: '',
+    password: '',
+};
+
+export const signInInitials = {
+    username: '',
+    password: '',
+};

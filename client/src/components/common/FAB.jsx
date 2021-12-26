@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonType } from '../../styles/theme';
+import { ButtonType } from '../../assets/styles/theme';
 
 const FAB = ({ icon: Icon, onClick }) => {
     return (

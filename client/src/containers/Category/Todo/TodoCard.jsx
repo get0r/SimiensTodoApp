@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types'
 
-import { CardType } from '../../../styles/theme';
 import { CheckBox } from '../../../components';
+import { CardType } from '../../../assets/styles/theme';
 
 
 const TodoCard = ({ item, onClick }) => {

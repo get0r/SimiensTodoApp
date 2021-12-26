@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { PlusIcon, XIcon } from '@heroicons/react/solid';
 
-import { TypographyType, ContainerType, CardType, ButtonType } from '../../styles/theme';
+import { TypographyType, ContainerType, CardType, ButtonType } from '../../assets/styles/theme';
 import { Typography, IconButton, Input } from '../../components';
 
 import TodoList from './Todo/TodoList';

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ContainerType } from '../styles/theme';
+import { ContainerType } from '../assets/styles/theme';
 
 const Content = ({ children }) => {
     return (
