@@ -16,3 +16,5 @@ const AddCategory = () => {
 };
 
 export default AddCategory;
+
+export const ADD_CATEGORY_MODAL = 'ADD_CATEGORY';
